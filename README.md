@@ -1,1 +1,1 @@
-# IMAiC-community
+# IMAiC
