@@ -1,31 +1,219 @@
-# Science Directory README
+# Science Pod - Marine Research & Discovery
 
-## Purpose
+## Overview
 
-The Science directory contains notebooks and resources for marine science research, such as marine biology and bioinformatics. Its goal is to enable autonomous agents and researchers to carry out scientific analyses on marine data (e.g., species observations, environmental DNA sequences) in a rigorous, reproducible manner. This domain focuses on hypothesis-driven exploration, data analysis, and knowledge discovery about ocean life and ecosystems. Science notebooks serve as digital lab notebooks where experiments are conducted, results are documented, and insights are derived.
+The Science pod is IMAC's research engine, where rigorous scientific methods meet cutting-edge AI to unlock the mysteries of our oceans. We conduct hypothesis-driven research, analyze marine data, and generate insights that drive conservation action.
 
-## Key Agentic Execution Principles (Science)
+## Purpose & Mission
 
--   **Reproducibility & Validation:** Agents conducting scientific analyses must follow the scientific method. Each experiment or analysis should be scripted so that results can be reproduced and verified by others. Notebooks include clear methodology and validation steps.
--   **Data Integrity & Provenance:** Data used in analyses should be tracked with metadata (source, time, conditions). Agents should automatically record data origins and any preprocessing applied.
--   **Continuous Learning:** The Science module allows for iterative refinement. An agent might start with a simple model or analysis, observe results, then refine the approach. Notebooks can be re-run with updated data or parameters.
--   **Collaboration & Documentation:** Notebooks are written to be easily understood by human scientists, with clear documentation, visualizations, and narrative text to follow an agent’s reasoning, aligning with iMAC’s educational mission.
+The Science pod:
+- **Conducts** reproducible marine research using standardized methodologies
+- **Analyzes** diverse datasets from eDNA to satellite imagery
+- **Discovers** patterns and insights about ocean ecosystems
+- **Validates** findings through peer review and cross-verification
+- **Shares** knowledge openly for global impact
 
-## Guidance on Context & Structure (Science)
+## Research Domains
 
--   **Context Storage & Retrieval:** Scientific notebooks consume raw data and produce analyzed datasets or reports. Context from other modules (e.g., Hardware) is ingested, and context for other modules (e.g., Software) may be generated. Outputs are saved in standardized locations/formats, referenced by the Core context index.
--   **Notebook Structure:** Science templates follow a clear structure:
-    1.  **Introduction:** The research question or problem.
-    2.  **Methods:** Data loading, cleaning, analysis techniques.
-    3.  **Results:** Outputs, graphs, metrics, and agent commentary.
-    4.  **Conclusion & Next Steps:** Summary of findings and suggestions for further work.
--   **Inter-Module Communication:** Science notebooks may interact with other modules (e.g., Software for computations, Hardware for data requests) using clearly defined data exchange formats (e.g., CSV, JSON) and asynchronous communication where feasible.
+### Marine Biology
+Understanding life in our oceans through:
+- **Biodiversity Assessment**: Species surveys and population dynamics
+- **Ecosystem Analysis**: Food webs, habitat mapping, ecological interactions
+- **Behavioral Studies**: Migration patterns, feeding behavior, reproduction cycles
+- **Conservation Biology**: Endangered species monitoring, habitat restoration effectiveness
 
-## Subdirectories
+### Bioinformatics
+Decoding the ocean's molecular signatures:
+- **eDNA Analysis**: Species detection from water samples
+- **Metagenomics**: Microbial community profiling
+- **Metabolic Networks**: Understanding ecosystem functions
+- **Phylogenetics**: Evolutionary relationships in marine life
 
-This directory is organized into the following subdirectories, each focusing on a specific area of marine science:
+### Oceanography
+Studying the physical and chemical ocean:
+- **Climate Impacts**: Temperature, acidification, sea level changes
+- **Current Modeling**: Ocean circulation and connectivity
+- **Biogeochemistry**: Nutrient cycles, carbon sequestration
+- **Pollution Tracking**: Microplastics, chemical contaminants
 
--   `marine-biology/`: Focuses on the study of marine organisms, their behaviors, and their interactions with the environment.
--   `bioinformatics/`: Deals with the application of computational tools to analyze biological data, particularly molecular data like eDNA.
+## Our Approach
 
-Each subdirectory contains its own `README.md` with more specific details and relevant Jupyter notebook templates.
+### Scientific Method in Action
+
+```mermaid
+graph LR
+    A[Research Question] --> B[Hypothesis]
+    B --> C[Data Collection]
+    C --> D[Analysis]
+    D --> E[Validation]
+    E --> F[Publication]
+    F --> G[Action]
+```
+
+### Key Principles
+
+1. **Reproducibility First**
+   - All analyses are scripted and version-controlled
+   - Raw data → processed results pipeline is transparent
+   - Methods are documented in detail
+
+2. **Data Integrity**
+   - Complete provenance tracking
+   - Metadata standards compliance
+   - Quality control at every step
+
+3. **Open Science**
+   - FAIR data principles
+   - Public datasets when possible
+   - Collaborative analysis
+
+4. **Continuous Learning**
+   - Iterative refinement of methods
+   - Integration of new techniques
+   - Feedback loops with other pods
+
+## Directory Structure
+
+```
+science/
+├── README.md (this file)
+├── science_context.md           # Operational guidelines
+├── marine-biology/
+│   ├── README.md
+│   ├── biodiversity_analysis/
+│   ├── ecosystem_modeling/
+│   └── species_tracking/
+├── bioinformatics/
+│   ├── README.md
+│   ├── eDNA_pipelines/
+│   ├── metagenomics/
+│   └── MNA/                    # Metabolic Network Analysis
+└── oceanography/
+    ├── README.md
+    ├── climate_analysis/
+    └── pollution_monitoring/
+```
+
+## Getting Started
+
+### For New Researchers
+
+1. **Choose Your Domain**
+   - Browse subdirectories to find your area of interest
+   - Read domain-specific READMEs for context
+
+2. **Understand the Standards**
+   - Review `science_context.md` for operational guidelines
+   - Check data format requirements
+   - Learn about our reproducibility standards
+
+3. **Start with Templates**
+   - Use notebook templates as starting points
+   - Follow the standard analysis structure
+   - Include proper documentation
+
+### Example Projects
+
+#### Coral Reef Health Assessment
+```python
+# Example workflow:
+1. Load underwater imagery dataset
+2. Apply species detection models
+3. Calculate biodiversity indices
+4. Analyze temporal trends
+5. Generate conservation recommendations
+```
+
+#### eDNA Species Detection
+```python
+# Example workflow:
+1. Process raw sequencing data
+2. Quality filter and trim sequences
+3. Match against reference databases
+4. Statistical validation
+5. Generate species occurrence maps
+```
+
+#### Ocean Acidification Monitoring
+```python
+# Example workflow:
+1. Integrate sensor and satellite data
+2. Calculate pH trends
+3. Correlate with species data
+4. Model future scenarios
+5. Identify vulnerable areas
+```
+
+## Data Standards
+
+### Input Data Types
+- **Biological**: Species counts, eDNA sequences, acoustic recordings
+- **Physical**: Temperature, salinity, pH, current data
+- **Chemical**: Nutrient concentrations, pollutant levels
+- **Imagery**: Satellite, drone, underwater camera data
+
+### Output Standards
+- **Reports**: Markdown with embedded visualizations
+- **Data**: CSV/NetCDF with complete metadata
+- **Code**: Jupyter notebooks with clear documentation
+- **Visualizations**: Publication-quality figures
+
+## Collaboration
+
+### Within Science Pod
+- Regular journal clubs to discuss methods
+- Peer review of analyses before publication
+- Shared datasets and reference materials
+
+### With Other Pods
+- **Hardware**: Receive sensor data, request new deployments
+- **Software**: Use AI models, request new tools
+- **Education**: Provide content for teaching materials
+- **Core**: Follow orchestrated workflows
+
+## Impact Metrics
+
+We measure our success through:
+- **Publications**: Peer-reviewed papers and reports
+- **Datasets**: Publicly available research data
+- **Models**: Validated ecological and predictive models
+- **Conservation**: Real-world application of findings
+
+## Contributing
+
+We welcome contributions from:
+- **Domain Experts**: Marine biologists, oceanographers, ecologists
+- **Data Scientists**: Analysis methods, visualization
+- **Field Researchers**: Data collection, validation
+- **Citizen Scientists**: Observations, data processing
+
+### Contribution Process
+1. Review existing work in your area
+2. Propose new analysis or improvement
+3. Follow reproducibility guidelines
+4. Submit well-documented notebooks
+5. Participate in peer review
+
+## Resources
+
+### Key References
+- [FAIR Data Principles](https://www.go-fair.org/)
+- [BeBOP Consortium Standards](https://www.bebop-obon.org/)
+- [Ocean Best Practices](https://www.oceanbestpractices.org/)
+
+### Tools & Libraries
+- **Python**: NumPy, Pandas, SciPy, Matplotlib
+- **R**: tidyverse, vegan, phyloseq
+- **Bioinformatics**: QIIME2, mothur, BLAST
+- **Geospatial**: xarray, cartopy, GDAL
+
+## Contact
+
+For Science pod matters:
+- Open an issue with `science-pod` label
+- Join Science pod meetings (schedule TBD)
+- Contact domain leads (TBD)
+
+---
+
+*Advancing ocean science through open collaboration and rigorous research* 

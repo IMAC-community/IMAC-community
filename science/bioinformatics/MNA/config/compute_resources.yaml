@@ -1,0 +1,162 @@
+# Computational Resource Configuration
+# Optimize for different computing environments
+
+# Resource profiles
+profiles:
+  # Laptop/workstation settings
+  local:
+    name: "Local workstation"
+    threads: 4
+    memory_gb: 8
+    chunk_size: 500
+    parallel_jobs: 1
+    
+  # Standard server
+  server:
+    name: "Research server"
+    threads: 16
+    memory_gb: 32
+    chunk_size: 2000
+    parallel_jobs: 4
+    
+  # High-performance computing
+  hpc:
+    name: "HPC cluster"
+    threads: 48
+    memory_gb: 128
+    chunk_size: 10000
+    parallel_jobs: 12
+    
+  # Cloud computing
+  cloud:
+    name: "Cloud instance"
+    threads: 32
+    memory_gb: 64
+    chunk_size: 5000
+    parallel_jobs: 8
+    instance_type: "compute-optimized"
+
+# Step-specific resource allocation
+step_resources:
+  quality_control:
+    threads_ratio: 0.25  # Fraction of total threads
+    memory_ratio: 0.15
+    io_intensive: true
+    
+  denoising:
+    threads_ratio: 0.5
+    memory_ratio: 0.3
+    compute_intensive: true
+    
+  taxonomic_profiling:
+    threads_ratio: 0.75
+    memory_ratio: 0.4
+    memory_per_thread_gb: 2
+    
+  humann3:
+    threads_ratio: 1.0
+    memory_ratio: 0.8
+    memory_per_thread_gb: 4
+    disk_space_gb: 50
+    
+  normalization:
+    threads_ratio: 0.25
+    memory_ratio: 0.2
+    vectorized: true
+    
+  visualization:
+    threads_ratio: 0.5
+    memory_ratio: 0.3
+    gpu_accelerated: false
+
+# Memory management
+memory:
+  # Buffer settings
+  system_reserve_gb: 2
+  buffer_percentage: 10
+  
+  # Chunking strategies
+  chunking:
+    enable_adaptive: true
+    min_chunk_size: 100
+    max_chunk_size: 50000
+    
+  # Caching
+  cache:
+    enable: true
+    size_gb: 4
+    location: "/tmp/mna_cache"
+    
+# Parallelization settings
+parallelization:
+  # Method selection
+  backend: "multiprocessing"  # Options: multiprocessing, threading, dask
+  
+  # Load balancing
+  scheduler: "dynamic"
+  queue_size: 100
+  
+  # Fault tolerance
+  retry_failed: true
+  max_retries: 3
+  
+# Storage optimization
+storage:
+  # Compression
+  compress_intermediate: true
+  compression_level: 6
+  
+  # Temporary files
+  temp_directory: "/tmp/mna_temp"
+  cleanup_temp: true
+  
+  # Output management
+  output_buffer_mb: 100
+  
+# GPU settings (if available)
+gpu:
+  enable: false
+  device_id: 0
+  memory_fraction: 0.8
+  
+# Monitoring
+monitoring:
+  enable: true
+  log_level: "INFO"
+  
+  # Performance tracking
+  track_memory: true
+  track_time: true
+  
+  # Resource alerts
+  memory_threshold: 0.9
+  disk_threshold: 0.95
+  
+# Environment-specific optimizations
+optimizations:
+  # Nanopore data
+  nanopore:
+    use_fast5_api: true
+    multiread_fast5: true
+    
+  # Marine data
+  marine:
+    assume_high_diversity: true
+    optimize_for_low_coverage: false
+    
+# Scheduler integration
+schedulers:
+  slurm:
+    partition: "normal"
+    time_limit: "24:00:00"
+    module_loads:
+      - "python/3.9"
+      - "humann3/3.6"
+      
+  sge:
+    queue: "all.q"
+    project: "marine_edna"
+    
+  pbs:
+    queue: "batch"
+    walltime: "24:00:00"

@@ -1,0 +1,127 @@
+# Marine-Specific Database Configuration
+# Paths and settings for ocean microbiome reference data
+
+databases:
+  # Taxonomic databases
+  taxonomy:
+    silva_marine:
+      version: "138.2"
+      path: "reference_data/databases/SILVA_138.2_SSURef_NR99_marine.fasta"
+      description: "SILVA marine subset - SSU rRNA genes"
+      download_url: "https://www.arb-silva.de/download/archive/qiime"
+      
+    pr2_marine:
+      version: "5.0.0"
+      path: "reference_data/databases/pr2_version_5.0.0_SSU_marine.fasta"
+      description: "PR2 database for marine protists"
+      download_url: "https://github.com/pr2database/pr2database/releases"
+      
+  # Functional databases
+  functional:
+    marine_chocophlan:
+      version: "v202212"
+      path: "reference_data/databases/marine_chocophlan"
+      description: "Marine-adapted ChocoPhlAn for HUMANn3"
+      size_gb: 15
+      
+    marine_uniref90:
+      version: "2023_01"
+      path: "reference_data/databases/marine_uniref90"
+      description: "Ocean microbiome subset of UniRef90"
+      size_gb: 25
+      
+  # Marine marker genes
+  markers:
+    prokaryotic:
+      path: "reference_data/marine_markers/prokaryotic_markers.fasta"
+      genes:
+        - name: "amoA"
+          function: "Ammonia oxidation"
+          organisms: ["Thaumarchaeota", "Betaproteobacteria"]
+          
+        - name: "nifH"
+          function: "Nitrogen fixation"
+          organisms: ["Cyanobacteria", "Gammaproteobacteria"]
+          
+        - name: "dsrA"
+          function: "Sulfate reduction"
+          organisms: ["Deltaproteobacteria", "Firmicutes"]
+          
+        - name: "pmoA"
+          function: "Methane oxidation"
+          organisms: ["Methylococcales", "Methylophilales"]
+          
+    eukaryotic:
+      path: "reference_data/marine_markers/eukaryotic_markers.fasta"
+      genes:
+        - name: "rbcL"
+          function: "Carbon fixation"
+          organisms: ["Diatoms", "Dinoflagellates", "Haptophytes"]
+          
+        - name: "18S_V4"
+          function: "Taxonomic marker"
+          organisms: ["All marine eukaryotes"]
+          
+    viral:
+      path: "reference_data/marine_markers/viral_markers.fasta"
+      description: "Marine viral marker genes"
+      
+  # Contamination databases
+  contamination:
+    terrestrial:
+      path: "reference_data/marine_markers/terrestrial_markers.fasta"
+      description: "Common terrestrial contaminants in marine samples"
+      sources:
+        - "Soil bacteria 16S"
+        - "Plant chloroplast genes"
+        - "Human microbiome markers"
+        
+    freshwater:
+      path: "reference_data/marine_markers/freshwater_markers.fasta"
+      description: "Freshwater indicators for coastal samples"
+      
+# Custom marine pathways
+marine_pathways:
+  carbon_cycling:
+    path: "reference_data/ocean_metabolic_pathways/marine_carbon_cycling.txt"
+    pathways:
+      - id: "DMS_degradation"
+        name: "Dimethylsulfoniopropionate degradation"
+        importance: "Climate regulation"
+        
+      - id: "carbon_concentration"
+        name: "Carbon concentrating mechanisms"
+        importance: "Low CO2 adaptation"
+        
+  nitrogen_cycling:
+    path: "reference_data/ocean_metabolic_pathways/nitrogen_cycling_marine.txt"
+    pathways:
+      - id: "marine_nitrification"
+        name: "Marine ammonia oxidation"
+        importance: "Primary production support"
+        
+      - id: "anammox"
+        name: "Anaerobic ammonia oxidation"
+        importance: "Nitrogen loss in OMZs"
+        
+  sulfur_cycling:
+    path: "reference_data/ocean_metabolic_pathways/sulfur_cycling_ocean.txt"
+    pathways:
+      - id: "DMSP_synthesis"
+        name: "DMSP biosynthesis"
+        importance: "Osmolyte and climate"
+        
+# Database validation
+validation:
+  check_md5: true
+  verify_completeness: true
+  minimum_sequences:
+    taxonomy: 10000
+    functional: 100000
+    markers: 100
+    
+# Update schedule
+updates:
+  check_frequency: "monthly"
+  auto_update: false
+  notify_on_update: true
