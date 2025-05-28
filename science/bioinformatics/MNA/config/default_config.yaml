@@ -1,0 +1,129 @@
+# Marine eDNA Metabolic Network Analysis Configuration
+# Default settings for production pipeline
+
+workflow:
+  name: "marine_edna_metabolic_analysis"
+  version: "1.0.0"
+  description: "HUMANn3-based metabolic profiling for marine eDNA"
+  
+# Marine environment profiling
+marine_environment:
+  type: "coastal"  # Options: coastal, pelagic, deep-sea, polar, hydrothermal
+  depth_range: [0, 200]  # meters
+  salinity_expected: [30, 38]  # PSU (Practical Salinity Units)
+  temperature_range: [4, 30]  # Celsius
+  
+# Quality Control Parameters
+quality_control:
+  # Nanopore-specific settings
+  min_read_length: 1000
+  max_read_length: 50000
+  min_quality_score: 7
+  
+  # Marine-specific QC
+  remove_adapters: true
+  detect_contamination: true
+  contamination_db: "reference_data/marine_markers/terrestrial_markers.fasta"
+  contamination_threshold: 0.85
+  
+  # Error correction
+  correct_homopolymers: true
+  homopolymer_threshold: 6
+  
+# Denoising parameters
+denoising:
+  enable: true
+  method: "marine_optimized"
+  preserve_diversity: true
+  at_rich_correction: true  # Marine bacteria often AT-rich
+  
+# Taxonomic profiling
+taxonomic_profiling:
+  database: "silva_marine_subset"
+  confidence_threshold: 0.8
+  
+  # Marine-specific settings
+  remove_terrestrial: true
+  depth_stratified: true
+  use_marine_markers: true
+  marker_database: "reference_data/marine_markers/prokaryotic_markers.fasta"
+  
+# HUMANn3 Configuration
+humann3:
+  # Database paths
+  nucleotide_database: "marine_chocophlan"
+  protein_database: "marine_uniref90"
+  metaphlan_db: "mpa_vOct22_CHOCOPhlAn_202212"
+  
+  # Execution parameters
+  threads: 8
+  memory_mb: 16000
+  search_mode: "uniref90"
+  bypass_translated_search: false
+  
+  # Output settings
+  output_format: "tsv"
+  remove_temp_output: false
+  
+# Marine-specific adaptations
+marine_adaptations:
+  # Abundance corrections
+  normalize_by_salinity: true
+  apply_depth_correction: true
+  temperature_adjustment: true
+  
+  # Taxonomic filtering
+  remove_terrestrial_taxa: true
+  minimum_marine_confidence: 0.85
+  
+  # Metabolic pathway focus
+  enhance_marine_pathways: true
+  marine_pathway_database: "reference_data/ocean_metabolic_pathways/"
+  
+# Time series analysis
+timeseries:
+  enable: true
+  minimum_timepoints: 3
+  
+  # Temporal patterns
+  detect_seasonality: true
+  trend_analysis: true
+  anomaly_detection: true
+  
+  # Environmental correlation
+  correlate_with_metadata: true
+  lag_analysis: true
+  
+# Visualization settings
+visualization:
+  # Heatmap configuration
+  heatmap_clustering: "hierarchical"
+  color_scheme: "ocean"
+  
+  # Interactive features
+  enable_interactive: true
+  include_metadata_overlay: true
+  temporal_slider: true
+  
+  # Export formats
+  export_formats: ["html", "pdf", "svg"]
+  
+# Computational resources
+compute:
+  max_threads: 8
+  memory_limit_gb: 32
+  chunk_size: 1000  # Sequences per chunk
+  
+# Output configuration
+output:
+  base_directory: "results"
+  create_timestamped_folders: true
+  keep_intermediate_files: false
+  compress_outputs: true
+  
+# Educational mode settings
+education:
+  enable_verbose_output: true
+  include_explanations: true
+  generate_exercises: true
+  difficulty_level: "intermediate"  # beginner, intermediate, advanced

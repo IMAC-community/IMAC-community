@@ -1,0 +1,7 @@
+sample_id	collection_date	latitude	longitude	depth_m	temperature_c	salinity_psu	dissolved_oxygen_mg_l	chlorophyll_ug_l	nitrate_umol_l	phosphate_umol_l	silicate_umol_l	sample_volume_l	filter_size_um	extraction_method	sequencing_run	flow_cell_id	basecalling_model	site_name	ecosystem_type	notes
+EXAMPLE_001	2023-06-15	25.0000	-80.0000	5	28.5	35.2	6.8	0.45	0.12	0.08	1.2	2.0	0.22	PowerWater	RUN001	FAK12345	sup	Coastal_Station_A	coastal	Clear weather, calm seas
+EXAMPLE_002	2023-06-15	25.0000	-80.0000	75	22.3	35.8	5.2	2.31	2.45	0.18	3.5	2.0	0.22	PowerWater	RUN001	FAK12345	sup	Coastal_Station_A	coastal	Chlorophyll maximum depth
+EXAMPLE_003	2023-06-15	25.0000	-80.0000	200	18.1	35.9	4.1	0.12	8.76	0.65	12.3	2.0	0.22	PowerWater	RUN001	FAK12345	sup	Coastal_Station_A	coastal	Below photic zone
+EXAMPLE_004	2023-07-20	24.5000	-81.0000	5	29.2	34.8	6.5	0.38	0.08	0.06	0.9	2.0	0.22	PowerWater	RUN002	FAK67890	sup	Offshore_Station_B	pelagic	Summer sampling
+EXAMPLE_005	2023-07-20	24.5000	-81.0000	500	12.5	35.4	2.8	0.02	18.45	1.32	28.6	4.0	0.22	PowerWater	RUN002	FAK67890	sup	Offshore_Station_B	pelagic	Mesopelagic zone
+BLANK_001	2023-06-15	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	0.0	0.22	PowerWater	RUN001	FAK12345	sup	Lab_Blank	control	Extraction blank control
