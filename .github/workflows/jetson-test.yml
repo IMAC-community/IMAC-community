@@ -1,0 +1,22 @@
+name: Runner Test
+
+on:
+  # Manually trigger the workflow
+  workflow_dispatch:
+
+jobs:
+  test-runner:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Test basic commands
+        run: |
+          echo "Testing runner functionality..."
+          pwd
+          ls -la
+          uname -a
+          echo "Basic system test completed"
+
