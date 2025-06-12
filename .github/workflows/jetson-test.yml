@@ -6,7 +6,7 @@ on:
 
 jobs:
   test-runner:
-    runs-on: "self-hosted, ARM64"
+    runs-on: self-hosted
     
     steps:
       - name: Checkout repository
